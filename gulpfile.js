@@ -8,7 +8,6 @@ const htmlmin = require('gulp-htmlmin');
 const ghPages = require('gulp-gh-pages');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
-const importCss = require('gulp-import-css');
 const minifyCss = require('gulp-minify-css');
 const mocha = require('gulp-spawn-mocha');
 const plumber = require('gulp-plumber');
@@ -39,7 +38,6 @@ gulp.task('build:styles', () =>
     .src('source/_sass/styles.scss')
     .pipe(plumber())
     .pipe(sass())
-    .pipe(importCss())
     .pipe(
       autoprefixer({
         browsers: ['last 2 versions', '> 5%', 'IE 9']
