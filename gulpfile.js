@@ -8,7 +8,6 @@ const cleanCSS = require('gulp-clean-css');
 const htmlmin = require('gulp-htmlmin');
 const ghPages = require('gulp-gh-pages');
 const gulp = require('gulp');
-const gutil = require('gulp-util');
 const mocha = require('gulp-spawn-mocha');
 const plumber = require('gulp-plumber');
 const rename = require('gulp-rename');
@@ -48,7 +47,6 @@ gulp.task('build:styles', () =>
     .pipe(gulp.dest('source/assets/'))
     .pipe(gulp.dest('_site/assets/'))
     .pipe(browserSync.stream())
-    .on('error', gutil.log)
 );
 
 /* =========================================
@@ -67,7 +65,6 @@ gulp.task('build:scripts:dev', () =>
     .pipe(gulp.dest('source/assets/'))
     .pipe(gulp.dest('_site/assets/'))
     // .pipe(browserSync.stream())
-    .on('error', gutil.log)
 );
 
 gulp.task('build:scripts:prod', () =>
@@ -77,7 +74,6 @@ gulp.task('build:scripts:prod', () =>
     .pipe(webpack(webpackProdConfig))
     .pipe(gulp.dest('source/assets/'))
     .pipe(gulp.dest('_site/assets/'))
-    .on('error', gutil.log)
 );
 
 /* =========================================

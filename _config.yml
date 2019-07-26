@@ -25,7 +25,7 @@ seo_image_path: #'/images/media/filename.jpg'
 
 # Build settings
 markdown: kramdown
-gems:
+plugins:
   - jekyll-feed
 
 exclude:
@@ -40,4 +40,3 @@ timezone: America/New_York
 # Folder Structure
 source: ./source
 # sass_dir: source/css
-
