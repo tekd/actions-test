@@ -1,5 +1,6 @@
 const CompressionPlugin = require('compression-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   context: __dirname,
@@ -20,12 +21,19 @@ module.exports = {
       }
     ]
   },
-    plugins: [
-    new UglifyJsPlugin({
-      exclude: [/\.min\.js$/gi] // skip pre-minified libs
-    }),
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin({
+      exclude: [/\.min\.js$/gi],
+      sourceMap: true // Must be set to true if using source-maps in production
+    })],
+  },
+  plugins: [
+    // new UglifyJsPlugin({
+    //   exclude: [/\.min\.js$/gi] // skip pre-minified libs
+    // }),
     new CompressionPlugin({
-      asset: '[path].gz[query]',
+      // asset: '[path].gz[query]',
       algorithm: 'gzip',
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
