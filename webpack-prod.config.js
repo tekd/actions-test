@@ -1,8 +1,8 @@
 const CompressionPlugin = require('compression-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
+  mode: 'production',
   context: __dirname,
   entry: './source/_js/scripts.js',
   output: {
@@ -29,9 +29,6 @@ module.exports = {
     })],
   },
   plugins: [
-    // new UglifyJsPlugin({
-    //   exclude: [/\.min\.js$/gi] // skip pre-minified libs
-    // }),
     new CompressionPlugin({
       // asset: '[path].gz[query]',
       algorithm: 'gzip',
