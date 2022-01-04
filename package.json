@@ -8,9 +8,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "gulp",
+    
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
+    "deploy": "gulp deploy",
+    "dev": "gulp",
     "lint": "eslint ./source/_js/**/*.js",
     "test": "mocha $(find spec -name '*.js')",
     "mocha-watch": "mocha -w --recursive $(find spec -name '*.js')"
