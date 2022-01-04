@@ -8,6 +8,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "gulp",
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
     "lint": "eslint ./source/_js/**/*.js",
@@ -17,9 +18,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "@babel/preset-env": "^7.15.0",
-    "babel-loader": "^8.2.2",
+    "@babel/cli": "^7.16.7",
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "babel-loader": "^8.2.3",
     "browser-sync": "^2.27.5",
     "chai": "^4.3.4",
     "compression-webpack-plugin": "^6.1.1",
@@ -42,7 +44,6 @@
     "install": "^0.13.0",
     "jquery": "^3.6.0",
     "jsdom": "^16.7.0",
-    "mocha": "^7.2.0",
     "natives": "^1.1.6",
     "npm": "^6.14.14",
     "prettier": "^1.19.1",
@@ -52,5 +53,8 @@
   },
   "dependencies": {
     "gulp": "^4.0.2"
+  },
+  "engines": {
+    "node": "~10 - ~14"
   }
 }
