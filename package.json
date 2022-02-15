@@ -1,9 +1,13 @@
 {
   "name": "objectively-boilerplate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/objectively/objectively-jekyll-boilerplate.git"
+  },
+  "engines": {
+    "node": "v16.14.0",
+    "npm": "8.3.1"
   },
   "description": "",
   "main": "index.js",
@@ -46,7 +50,6 @@
     "jquery": "^3.6.0",
     "jsdom": "^16.7.0",
     "natives": "^1.1.6",
-    "npm": "^8.5.0",
     "prettier": "^1.19.1",
     "run-sequence": "^2.2.1",
     "sass": "^1.45.2",
