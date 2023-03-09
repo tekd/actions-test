@@ -1,0 +1,54 @@
+---
+barChart:
+- sys:
+    id: 50L6zHAgaiX59cxOb24X3m
+    created_at: !ruby/object:DateTime 2023-03-09 19:23:25.092000000 Z
+    updated_at: !ruby/object:DateTime 2023-03-09 19:29:52.038000000 Z
+    content_type_id: barChart
+    revision: 2
+  markdown_table: |-
+    |Year|Value|
+    |--- |--- |
+    |2016|20|
+    |2017|40|
+    |2018|60|
+    |2019|60|
+    |2020|80|
+    |2021|100|
+  figure_caption: This is a markdown bar chart styled with [Charts.css](https://chartscss.org/charts/bar/).
+  chart_title: Example Markdown Bar Chart
+  chart_html: |
+    <table>
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2016</td>
+          <td>20</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>40</td>
+        </tr>
+        <tr>
+          <td>2018</td>
+          <td>60</td>
+        </tr>
+        <tr>
+          <td>2019</td>
+          <td>60</td>
+        </tr>
+        <tr>
+          <td>2020</td>
+          <td>80</td>
+        </tr>
+        <tr>
+          <td>2021</td>
+          <td>100</td>
+        </tr>
+      </tbody>
+    </table>

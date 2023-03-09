@@ -8,19 +8,12 @@ seo_image_path: #'/images/media/filename.jpg'
 
 <main role="main" id="index"> <!-- main content starts here -->
 
-<section class="top-section top-section--purple">
-  <div class="row">
-    <div class="medium-12 column">
-      <h1>{{page.title}}</h1>
-      <p class="top-section__tagline">{{page.subtitle}}</p>
-    </div>
-  </div>
-</section>
-
 <section class="page-section">
   <div class="row">
     <div class="column large-12">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed necessitatibus, error eaque vero aperiam numquam, tenetur, soluta quibusdam odio eius aut. Distinctio placeat repellendus, repellat neque itaque in esse nobis!</p>
+      {% for chart in site.data.contentful.charts.barChart %}
+      {{chart.chart_html}}
+      {% endfor %}
     </div>
   </div>
 </section>

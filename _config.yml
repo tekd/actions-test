@@ -45,17 +45,19 @@ source: ./source
 
 contentful:
   spaces:
-    - index:
-        space: ENV_CONTENTFUL_SPACE_ID
-        access_token: ENV_CONTENTFUL_ACCESS_TOKEN
+    - charts:
+        space: ENV_OBJECTIVELY_SANDBOX_CONTENTFUL_SPACE_ID
+        access_token: ENV_OBJECTIVELY_SANDBOX_CONTENTFUL_ACCESS_TOKEN
         base_path: ./source
         destination: /contentful
         all_entries: true
         cda_query:
-          content_type: index
+          content_type: barChart
         client_options:
           max_include_resolution_depth: 2
           reuse_entries: false
+        content_types:                      # Optional
+          barChart: ChartMapper
 
 page_gen:
   - data: <data_dir>
