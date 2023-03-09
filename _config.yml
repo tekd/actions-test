@@ -23,6 +23,8 @@ twitter_username:
 github_username:
 seo_image_path: #'/images/media/filename.jpg'
 
+permalink: pretty
+
 # Build settings
 markdown: kramdown
 plugins:
@@ -40,3 +42,25 @@ timezone: America/New_York
 # Folder Structure
 source: ./source
 # sass_dir: source/css
+
+contentful:
+  spaces:
+    - index:
+        space: ENV_CONTENTFUL_SPACE_ID
+        access_token: ENV_CONTENTFUL_ACCESS_TOKEN
+        base_path: ./source
+        destination: /contentful
+        all_entries: true
+        cda_query:
+          content_type: index
+        client_options:
+          max_include_resolution_depth: 2
+          reuse_entries: false
+
+page_gen:
+  - data: <data_dir>
+    template: <template>
+    name: 'pretty_url'
+    dir: ''
+    # customSeoImage: 'seo_image'
+    # customSeoDescription: 'seo_description'
