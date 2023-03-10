@@ -13,11 +13,11 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title:
+title: Objectively Sandbox
 email:
 description: > # this means to ignore newlines until "baseurl:"
 
-baseurl: "/objectively-jekyll-boilerplate" # the subpath of your site, e.g. /blog
+baseurl: "/objectively-sandbox" # the subpath of your site, e.g. /blog
 url: "https://objectively.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username:
 github_username:
@@ -43,24 +43,24 @@ timezone: America/New_York
 source: ./source
 # sass_dir: source/css
 
-contentful:
-  spaces:
-    - index:
-        space: ENV_CONTENTFUL_SPACE_ID
-        access_token: ENV_CONTENTFUL_ACCESS_TOKEN
-        base_path: ./source
-        destination: /contentful
-        all_entries: true
-        cda_query:
-          content_type: index
-        client_options:
-          max_include_resolution_depth: 2
-          reuse_entries: false
+# contentful:
+#   spaces:
+#     - index:
+#         space: ENV_CONTENTFUL_SPACE_ID
+#         access_token: ENV_CONTENTFUL_ACCESS_TOKEN
+#         base_path: ./source
+#         destination: /contentful
+#         all_entries: true
+#         cda_query:
+#           content_type: index
+#         client_options:
+#           max_include_resolution_depth: 2
+#           reuse_entries: false
 
-page_gen:
-  - data: <data_dir>
-    template: <template>
-    name: 'pretty_url'
-    dir: ''
-    # customSeoImage: 'seo_image'
-    # customSeoDescription: 'seo_description'
+# page_gen:
+#   - data: <data_dir>
+#     template: <template>
+#     name: 'pretty_url'
+#     dir: ''
+#     customSeoImage: 'seo_image'
+#     customSeoDescription: 'seo_description'
