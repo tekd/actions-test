@@ -11,8 +11,14 @@ seo_image_path: #'/images/media/filename.jpg'
 <section class="page-section">
   <div class="row">
     <div class="column large-12">
+      
       {% for chart in site.data.contentful.charts.barChart %}
-      {{chart.chart_html}}
+      <article>
+        <figure>
+          {{chart.chart_html}}
+          <figcaption>{{ chart.figure_caption | markdownify }}</figcaption>
+        </figure>
+      </article>
       {% endfor %}
     </div>
   </div>
