@@ -3,28 +3,26 @@ barChart:
 - sys:
     id: 50L6zHAgaiX59cxOb24X3m
     created_at: !ruby/object:DateTime 2023-03-09 19:23:25.092000000 Z
-    updated_at: !ruby/object:DateTime 2023-03-10 16:03:15.131000000 Z
+    updated_at: !ruby/object:DateTime 2023-03-13 18:22:37.635000000 Z
     content_type_id: barChart
-    revision: 5
+    revision: 7
   chart_title: Example Markdown Bar Chart
   figure_caption: This is a markdown bar chart styled with [Charts.css](https://chartscss.org/charts/bar/).
   markdown_table: |-
     |Year|Value|
     |--- |--- |
     |2016|20|
-    |2017|40|
+    |2017|72|
     |2018|60|
     |2019|15|
     |2020|80|
     |2021|100|
-  chart_type:
-  - bar
+  chart_type: column
   chart_properties:
-  - column
   - show-labels
   - show-data-axes
   chart_html: |
-    <table class="charts-css column show-heading show-labels show-primary-axis show-data-axes  hide-data">
+    <table class="charts-css column show-labels show-data-axes">
       <thead>
         <tr>
           <th>Year</th>
@@ -38,7 +36,7 @@ barChart:
         </tr>
         <tr>
           <td>2017</td>
-          <td>40</td>
+          <td>72</td>
         </tr>
         <tr>
           <td>2018</td>
@@ -61,9 +59,9 @@ barChart:
 - sys:
     id: TjuCr7AnaPjPjvsIwk75v
     created_at: !ruby/object:DateTime 2023-03-09 23:42:48.524000000 Z
-    updated_at: !ruby/object:DateTime 2023-03-10 16:12:25.419000000 Z
+    updated_at: !ruby/object:DateTime 2023-03-13 18:22:54.309000000 Z
     content_type_id: barChart
-    revision: 4
+    revision: 5
   chart_title: Black Friday Spending 2005 - 2018
   figure_caption: Black Friday Spending 2005 - 2018
   markdown_table: |-
@@ -83,13 +81,12 @@ barChart:
     | 2016 | 935.58  |
     | 2017 | 967.13  |
     | 2018 | 1007.24 |
-  chart_type:
-  - bar
+  chart_type: bar
   chart_properties:
   - show-data-axes
   - show-labels
   chart_html: |
-    <table class="charts-css column show-heading show-labels show-primary-axis show-data-axes  hide-data">
+    <table class="charts-css bar show-data-axes show-labels">
       <thead>
         <tr>
           <th>year</th>
@@ -158,9 +155,9 @@ barChart:
 - sys:
     id: VrMOix782BEfK9hZ2Xv3R
     created_at: !ruby/object:DateTime 2023-03-10 00:47:38.023000000 Z
-    updated_at: !ruby/object:DateTime 2023-03-10 16:22:56.415000000 Z
+    updated_at: !ruby/object:DateTime 2023-03-13 18:22:19.452000000 Z
     content_type_id: barChart
-    revision: 6
+    revision: 7
   chart_title: OSHWA Certifications By Year 2016 - 2021
   figure_caption: OSHWA Certifications By Year
   markdown_table: |-
@@ -172,16 +169,14 @@ barChart:
     | 2019   | 136 |
     | 2020   | 959 |
     | 2021   | 258 |
-  chart_type:
-  - bar
+  chart_type: bar
   chart_properties:
-  - column
   - show-data-axes
   - show-labels
   - show-primary-axis
   - hide-data
   chart_html: |
-    <table class="charts-css column show-heading show-labels show-primary-axis show-data-axes  hide-data">
+    <table class="charts-css bar show-data-axes show-labels show-primary-axis hide-data">
       <thead>
         <tr>
           <th>year</th>
