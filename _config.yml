@@ -46,8 +46,8 @@ source: ./source
 contentful:
   spaces:
     - charts:
-        space: ENV_OBJECTIVELY_SANDBOX_CONTENTFUL_SPACE_ID
-        access_token: ENV_OBJECTIVELY_SANDBOX_CONTENTFUL_ACCESS_TOKEN
+        space: ENV_TEKD_TEST_SPACE_ID
+        access_token: ENV_TEKD_TEST_ACCESS_TOKEN
         base_path: ./source
         destination: /contentful
         all_entries: true
