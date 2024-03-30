@@ -1,212 +1,92 @@
 ---
-barChart:
+chart:
 - sys:
-    id: 50L6zHAgaiX59cxOb24X3m
-    created_at: !ruby/object:DateTime 2023-03-09 19:23:25.092000000 Z
-    updated_at: !ruby/object:DateTime 2023-03-13 18:22:37.635000000 Z
-    content_type_id: barChart
-    revision: 7
-  chart_title: Example Markdown Bar Chart
-  figure_caption: This is a markdown bar chart styled with [Charts.css](https://chartscss.org/charts/bar/).
-  markdown_table: |-
-    |Year|Value|
-    |--- |--- |
-    |2016|20|
-    |2017|72|
-    |2018|60|
-    |2019|15|
-    |2020|80|
-    |2021|100|
-  chart_type: column
-  chart_properties:
-  - show-labels
-  - show-data-axes
-  chart_html: |
-    <table class="charts-css column show-labels show-data-axes">
-      <thead>
-        <tr>
-          <th>Year</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>2016</td>
-          <td>20</td>
-        </tr>
-        <tr>
-          <td>2017</td>
-          <td>72</td>
-        </tr>
-        <tr>
-          <td>2018</td>
-          <td>60</td>
-        </tr>
-        <tr>
-          <td>2019</td>
-          <td>15</td>
-        </tr>
-        <tr>
-          <td>2020</td>
-          <td>80</td>
-        </tr>
-        <tr>
-          <td>2021</td>
-          <td>100</td>
-        </tr>
-      </tbody>
-    </table>
+    id: 2uPtBP9ePPnFV6LKMBDMwZ
+    created_at: !ruby/object:DateTime 2024-03-25 16:30:35.179000000 Z
+    updated_at: !ruby/object:DateTime 2024-03-25 16:30:35.179000000 Z
+    content_type_id: chart
+    revision: 1
+  chart_title: Sales Revenue
+  chart_type: XY
+  chart_body: |
+    ---
+    config:
+        xyChart:
+            width: 900
+            height: 600
+        themeVariables:
+            xyChart:
+                titleColor: "#ff0000"
+    ---
+    xychart-beta
+        title "Sales Revenue"
+        x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+        y-axis "Revenue (in $)" 4000 --> 11000
+        bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+        line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
 - sys:
-    id: TjuCr7AnaPjPjvsIwk75v
-    created_at: !ruby/object:DateTime 2023-03-09 23:42:48.524000000 Z
-    updated_at: !ruby/object:DateTime 2023-03-13 18:22:54.309000000 Z
-    content_type_id: barChart
-    revision: 5
-  chart_title: Black Friday Spending 2005 - 2018
-  figure_caption: Black Friday Spending 2005 - 2018
-  markdown_table: |-
-    | year | value   |
-    | ---- | ------- |
-    | 2005 | 734.69  |
-    | 2006 | 750.7   |
-    | 2007 | 755.13  |
-    | 2008 | 694.19  |
-    | 2009 | 681.83  |
-    | 2010 | 718.98  |
-    | 2011 | 740.57  |
-    | 2012 | 752.24  |
-    | 2013 | 767.24  |
-    | 2014 | 802.45  |
-    | 2015 | 805.65  |
-    | 2016 | 935.58  |
-    | 2017 | 967.13  |
-    | 2018 | 1007.24 |
-  chart_type: bar
-  chart_properties:
-  - show-data-axes
-  - show-labels
-  chart_html: |
-    <table class="charts-css bar show-data-axes show-labels">
-      <thead>
-        <tr>
-          <th>year</th>
-          <th>value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>2005</td>
-          <td>734.69</td>
-        </tr>
-        <tr>
-          <td>2006</td>
-          <td>750.7</td>
-        </tr>
-        <tr>
-          <td>2007</td>
-          <td>755.13</td>
-        </tr>
-        <tr>
-          <td>2008</td>
-          <td>694.19</td>
-        </tr>
-        <tr>
-          <td>2009</td>
-          <td>681.83</td>
-        </tr>
-        <tr>
-          <td>2010</td>
-          <td>718.98</td>
-        </tr>
-        <tr>
-          <td>2011</td>
-          <td>740.57</td>
-        </tr>
-        <tr>
-          <td>2012</td>
-          <td>752.24</td>
-        </tr>
-        <tr>
-          <td>2013</td>
-          <td>767.24</td>
-        </tr>
-        <tr>
-          <td>2014</td>
-          <td>802.45</td>
-        </tr>
-        <tr>
-          <td>2015</td>
-          <td>805.65</td>
-        </tr>
-        <tr>
-          <td>2016</td>
-          <td>935.58</td>
-        </tr>
-        <tr>
-          <td>2017</td>
-          <td>967.13</td>
-        </tr>
-        <tr>
-          <td>2018</td>
-          <td>1007.24</td>
-        </tr>
-      </tbody>
-    </table>
+    id: 6WAM2sT1ojyrMCnM9i7rS5
+    created_at: !ruby/object:DateTime 2024-03-25 18:19:46.715000000 Z
+    updated_at: !ruby/object:DateTime 2024-03-25 18:19:46.715000000 Z
+    content_type_id: chart
+    revision: 1
+  chart_title: Netflix
+  chart_type: Pie
+  chart_body: |-
+    pie title NETFLIX
+             "Time spent looking for movie" : 90
+             "Time spent watching it" : 10
 - sys:
-    id: VrMOix782BEfK9hZ2Xv3R
-    created_at: !ruby/object:DateTime 2023-03-10 00:47:38.023000000 Z
-    updated_at: !ruby/object:DateTime 2023-03-13 18:22:19.452000000 Z
-    content_type_id: barChart
-    revision: 7
-  chart_title: OSHWA Certifications By Year 2016 - 2021
-  figure_caption: OSHWA Certifications By Year
-  markdown_table: |-
-    | year | value |
-    | --- | --- |
-    | 2016 | 85 |
-    | 2017 | 47 |
-    | 2018   | 110 |
-    | 2019   | 136 |
-    | 2020   | 959 |
-    | 2021   | 258 |
-  chart_type: bar
-  chart_properties:
-  - show-data-axes
-  - show-labels
-  - show-primary-axis
-  - hide-data
-  chart_html: |
-    <table class="charts-css bar show-data-axes show-labels show-primary-axis hide-data">
-      <thead>
-        <tr>
-          <th>year</th>
-          <th>value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>2016</td>
-          <td>85</td>
-        </tr>
-        <tr>
-          <td>2017</td>
-          <td>47</td>
-        </tr>
-        <tr>
-          <td>2018</td>
-          <td>110</td>
-        </tr>
-        <tr>
-          <td>2019</td>
-          <td>136</td>
-        </tr>
-        <tr>
-          <td>2020</td>
-          <td>959</td>
-        </tr>
-        <tr>
-          <td>2021</td>
-          <td>258</td>
-        </tr>
-      </tbody>
-    </table>
+    id: 5Eh5ZlqmowdjczZ3XQ1xVk
+    created_at: !ruby/object:DateTime 2024-03-25 18:31:25.424000000 Z
+    updated_at: !ruby/object:DateTime 2024-03-25 18:33:16.570000000 Z
+    content_type_id: chart
+    revision: 2
+  chart_title: Simple Bar Chart
+  chart_type: XY
+  chart_body: |-
+    xychart-beta
+        bar [2.3, 45, .98, -3.4]
+- sys:
+    id: 32x1lhTes4yH5SXLP1kmcF
+    created_at: !ruby/object:DateTime 2024-03-26 14:30:33.943000000 Z
+    updated_at: !ruby/object:DateTime 2024-03-26 14:30:33.943000000 Z
+    content_type_id: chart
+    revision: 1
+  chart_title: Tipping
+  chart_type: DataWrapper
+  chart_body: |-
+    <iframe title="Tipping in Europe and America" aria-label="Stacked Columns" id="datawrapper-chart-wCQGC" src="https://datawrapper.dwcdn.net/wCQGC/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="446" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();
+    </script>
+- sys:
+    id: 6aJjPySvRLkhDBAszkvZq3
+    created_at: !ruby/object:DateTime 2024-03-26 19:44:20.082000000 Z
+    updated_at: !ruby/object:DateTime 2024-03-26 19:45:03.017000000 Z
+    content_type_id: chart
+    revision: 2
+  chart_title: Number of Cases
+  chart_type: D3 Pie
+  chart_body: |-
+    |case_type             |number_of_cases|
+    |----------------------|---------------|
+    |Dispute about software|1              |
+    |Trafficking in website|1              |
+    |Webscraping           |2              |
+    |Video game cheating   |2              |
+    |Unauthorized use of   |3              |
+    |Dispute unrelated to  |5              |
+- sys:
+    id: 1a90DYlHULh9PbunIKcKbU
+    created_at: !ruby/object:DateTime 2024-03-30 19:44:23.974000000 Z
+    updated_at: !ruby/object:DateTime 2024-03-30 19:44:23.974000000 Z
+    content_type_id: chart
+    revision: 1
+  chart_title: Foods
+  chart_type: D3 Stacked Vertical Bar
+  chart_body: |
+    |category |yes|no |maybe|
+    |---------|---|---|-----|
+    |fruit    |6  |7  |8    |
+    |vegetable|5  |4  |9    |
+    |protein  |5  |9  |12   |
+    |snack    |10 |13 |12   |

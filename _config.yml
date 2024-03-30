@@ -52,12 +52,11 @@ contentful:
         destination: /contentful
         all_entries: true
         cda_query:
-          content_type: barChart
+          content_type: chart
         client_options:
           max_include_resolution_depth: 2
           reuse_entries: false
-        content_types:                      # Optional
-          barChart: ChartMapper
+
 
 # page_gen:
 #   - data: <data_dir>

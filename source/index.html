@@ -12,14 +12,17 @@ seo_image_path: #'/images/media/filename.jpg'
   <div class="row">
     <div class="column large-12">
       
-      {% for chart in site.data.contentful.charts.barChart %}
-      <article>
-        <figure>
-          {{chart.chart_html}}
-          <figcaption>{{ chart.figure_caption | markdownify }}</figcaption>
-        </figure>
-      </article>
+      {% for chart in site.data.contentful.charts.chart %}
+        {% if chart.chart_type == 'DataWrapper' %}
+        {{chart.chart_body}}
+        {% else %}
+        <pre class="mermaid">
+          {{chart.chart_body}}
+        </pre>
+        {% endif %}
       {% endfor %}
+
+    
     </div>
   </div>
 </section>
