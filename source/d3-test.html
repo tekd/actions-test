@@ -1,8 +1,9 @@
 ---
 layout: default
 title: D3 Testing Page
-description: 
+description:
 seo_image_path: #'/images/media/filename.jpg'
+chart: true
 ---
 
 <main role="main">
@@ -19,7 +20,12 @@ seo_image_path: #'/images/media/filename.jpg'
 
   <section class="page-section">
     <div class="row">
-      <div class="column large-12"></div>
+      <div class="column large-12">
+        {% assign pie_chart = site.data.contentful.charts.chart | where: 'chart_type','D3 Pie' | first %} 
+        <div class="d3-chart d3-pie-chart" id="{{pie_chart.chart_title | slugify}}">
+          {{pie_chart.chart_body | markdownify}}
+        </div>
+      </div>
     </div>
   </section>
 </main>
