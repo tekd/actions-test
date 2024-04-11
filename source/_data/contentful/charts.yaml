@@ -90,3 +90,17 @@ chart:
     |vegetable|5  |4  |9    |
     |protein  |5  |9  |12   |
     |snack    |10 |13 |12   |
+- sys:
+    id: 6AQXxy8qPUElWHoqaD2DrD
+    created_at: !ruby/object:DateTime 2024-04-11 15:41:58.697000000 Z
+    updated_at: !ruby/object:DateTime 2024-04-11 15:41:58.697000000 Z
+    content_type_id: chart
+    revision: 1
+  chart_title: Things
+  chart_type: D3 Pie
+  chart_body: |
+    |label                 |value          |
+    |----------------------|---------------|
+    |one                   |20             |
+    |two                   |50             |
+    |three                 |30             |

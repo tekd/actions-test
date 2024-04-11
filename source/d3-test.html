@@ -21,10 +21,13 @@ chart: true
   <section class="page-section">
     <div class="row">
       <div class="column large-12">
-        {% assign pie_chart = site.data.contentful.charts.chart | where: 'chart_type','D3 Pie' | first %} 
+        {% assign pie_charts = site.data.contentful.charts.chart | where: 'chart_type','D3 Pie' %} 
+
+        {% for pie_chart in pie_charts %}
         <div class="d3-chart d3-pie-chart" id="{{pie_chart.chart_title | slugify}}">
           {{pie_chart.chart_body | markdownify}}
         </div>
+        {% endfor %}
       </div>
     </div>
   </section>
