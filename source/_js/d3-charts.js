@@ -35,73 +35,114 @@ const D3Chart = {
     console.log(activeTables);
   },
   createPieChart(chart) {
+    // begin vars
+    let chartAttrs = this.getPieChartAttributes();
     const data = this.htmlTableToJson(chart);
 
-    let chartAttrs = this.getPieChartAttributes();
+    const pieArcData = D3.pie().value(d => {
+      return d.value;
+    })(data);
+
+    const arcLabel = D3.arc()
+      .innerRadius(chartAttrs.innerRadius)
+      .outerRadius(chartAttrs.labelRadius)
+      .cornerRadius(chartAttrs.cornerRadius);
+
+    const arcPie = D3.arc()
+      .innerRadius(chartAttrs.innerRadius)
+      .outerRadius(chartAttrs.outerRadius)
+      .padRadius(chartAttrs.padRadius)
+      .padAngle(chartAttrs.padAngle)
+      .cornerRadius(chartAttrs.cornerRadius);
+
+    const midAngle = d => {
+      return d.startAngle + (d.endAngle - d.startAngle) / 2;
+    };
+
+    // end vars
 
     this.appendPieChartContainer(chart);
 
-    let viz = D3.select(`#${chart.id}-chart`)
-      .append('svg:svg')
-      .data([data])
+    // create the svg
+    let svg = D3.select(`#${chart.id}-chart`)
+      .append('svg')
       .attr('width', chartAttrs.width)
       .attr('height', chartAttrs.height)
-      .append('svg:g')
-      .attr('transform', 'translate(' + chartAttrs.radius + ',' + chartAttrs.radius + ')');
+      .attr('viewBox', [-chartAttrs.width / 2, -chartAttrs.height / 2, chartAttrs.width, chartAttrs.height]);
 
-    let pie = D3.pie().value(function(d) {
-      console.log(d, 'pie');
-      return d.value;
-    });
+    svg
+      .append('g')
+      .selectAll('path')
+      .data(pieArcData)
+      .join('path')
+      .attr('fill', (d, i) => chartAttrs.color(i))
+      .attr('d', arcPie)
+      .attr('title', d => d.label);
 
-    // console.log(pie)
-    let arc = D3.arc()
-      .innerRadius(0)
-      .outerRadius(chartAttrs.radius);
+    svg
+      .append('g')
+      .selectAll('polyline')
+      .data(pieArcData)
+      .join('polyline')
+      .attr('stroke', '#aaa')
+      .attr('opacity', '.3')
+      .attr('stroke-width', '1px')
+      .attr('fill', 'none')
+      .attr('points', d => {
+        const pos = arcLabel.centroid(d);
+        const pieCenter = arcPie.centroid(d);
+        pos[0] = chartAttrs.labelRadius * 1 * (midAngle(d) < Math.PI ? 1 : -1);
+        console.log(pieCenter, arcLabel.centroid(d), pos);
+        return [pieCenter, arcLabel.centroid(d), pos];
+      });
 
-    let arcs = viz
-      .selectAll('g.slice')
-      .data(pie)
-      .enter()
-      .append('svg:g')
-      .attr('class', 'slice');
-
-    arcs
-      .append('svg:path')
-      .attr('fill', function(d, i) {
-        console.log(chartAttrs.color(i));
-        return chartAttrs.color(i);
+    svg
+      .append('g')
+      .attr('font-family', 'sans-serif')
+      .attr('font-size', 14)
+      .attr('fill', 'black')
+      .selectAll('text')
+      .data(pieArcData)
+      .join('text')
+      .attr('transform', d => {
+        var pos = arcLabel.centroid(d);
+        pos[0] = chartAttrs.labelRadius * 1 * (midAngle(d) < Math.PI ? 1 : -1);
+        return `translate(${pos})`;
       })
-      .attr('d', arc);
+      .attr('text-anchor', d => (midAngle(d) < Math.PI ? 'start' : 'end'))
+      .text(d => {
+        return d.data.label;
+      });
 
-    // arc-text
-  
-    arcs
-      .append('svg:text')
-      
+    svg
+      .append('g')
       .attr('font-family', 'sans-serif')
       .attr('font-size', 12)
       .attr('text-anchor', 'middle')
       .attr('fill', '#000')
-      .attr('transform', function(d) {
-        d.innerRadius = 0;
-        d.outerRadius = chartAttrs.radius;
-        
-        return 'translate(' + arc.centroid(d) +  ')';
+      .selectAll('text')
+      .data(pieArcData)
+      .join('text')
+      .attr('transform', d => {
+        const pieCenter = arcPie.centroid(d);
+        return `translate(${pieCenter})`;
       })
-      .attr('text-anchor', 'middle')
-      .text(function(d, i) {
-        return data[i].value;
+      .text(d => {
+        return d.value;
       });
-
-    // arc labels
   },
   /* pie chart methods start */
   getPieChartAttributes() {
     return {
-      width: 300,
-      height: 300,
-      radius: 100,
+      width: 1000,
+      height: 500,
+      radius: 0,
+      innerRadius: 0,
+      outerRadius: 200,
+      labelRadius: 300,
+      cornerRadius: 0,
+      padRadius: 0,
+      padAngle: 0,
       color: D3.scaleOrdinal()
         .domain([0, 6])
         .range(['#F1892D', '#0EAC51', '#0077C0', '#7E349D', '#DA3C78', '#E74C3C'])
