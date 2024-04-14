@@ -104,3 +104,24 @@ chart:
     |one                   |20             |
     |two                   |50             |
     |three                 |30             |
+- sys:
+    id: 3HF1hPBsiYn0rbwSoaH3Cz
+    created_at: !ruby/object:DateTime 2024-04-14 00:02:28.551000000 Z
+    updated_at: !ruby/object:DateTime 2024-04-14 00:04:14.698000000 Z
+    content_type_id: chart
+    revision: 2
+  chart_title: Financial Relationship of Participants to Outcome
+  chart_type: D3 Stacked Vertical Bar
+  chart_body: |
+    |Type | No Direct Financial Benefit |Direct Financial Benefit|
+    |----------------------|---------------|---------------|
+    |Nonprofit org (user) |6|7|
+    |Nonprofit org (trade association)|5|4|
+    |Nonprofit org  |5 |9|
+    |Law Clinic (individual client)|10 |13|
+    |Law Clinic |20|10|
+    |Individual|12|19|
+    |Corporation|2|30|
+    |Community Org|15|19|
+    |Academic (institution)|10|3|
+    |Academic (individual)|23|12|
