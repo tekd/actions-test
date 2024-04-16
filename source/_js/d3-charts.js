@@ -37,62 +37,55 @@ const d3Chart = {
     console.log(activeTables);
   },
   createBarChart(chart) {
-    const width = 928;
-    const height = 500;
-    const marginTop = 10;
-    const marginRight = 10;
-    const marginBottom = 20;
-    const marginLeft = 40;
-
-    let attrs = this.getBarChartAttributes();
+    // https://observablehq.com/@d3/stacked-bar-chart/2
     let data = this.htmlTableToJson(chart);
-    let stackingKeys = ['sales'];
 
+    // Determine the series that need to be stacked.
     const series = d3
       .stack()
-      .keys(d3.union(data.map(d => d.date))) // apples, bananas, cherries, …
-      .value(([, group], key) => {
-        /*debugger*/ return group.get(key).sales;
-      })(
+      .keys(d3.union(data.map(d => d.age))) // distinct series keys, in input order
+      .value(([, D], key) => D.get(key).population)(
+      // get value for each series key and stack
       d3.index(
         data,
-        d => d.fruit,
-        d => d.date
+        d => d.state,
+        d => d.age
       )
-    );
+    ); // group by stack then series key
+    console.log(data);
+
+    console.log(series);
 
     this.appendChartContainer(chart);
 
     let chartAttrs = this.getBarChartAttributes();
 
-    // sales durain   durain   durain   durain
-    // sales cherries cherries cherries cherries
-    // sales bananas  bananas  bananas  bananas
-    // sales apples   apples   apples   apples
-    // // // date     date     date     date
+    // Prepare the scales for positional and color encodings.
+    const x = d3
+      .scaleBand()
+      .domain(
+        d3.groupSort(
+          data,
+          D => -d3.sum(D, d => d.population),
+          d => d.state
+        )
+      )
+      .range([chartAttrs.margin.left, chartAttrs.width - chartAttrs.margin.right])
+      .padding(0.1);
 
-    // store the maxY value, NEED TO BE GIVEN THE Stacking property
-    let yMax = d3.max(data, d => {
-      // Is there a better way to do this than calling each key?
-      var val = 0;
-      for (var k of stackingKeys) {
-        val += Number.parseInt(d[k]);
-      }
-      return val;
-    });
-
-    // build scale
-    let y = d3
+    const y = d3
       .scaleLinear()
-      .domain([0, yMax])
-      .range([attrs.height, 0]);
+      .domain([0, d3.max(series, d => d3.max(d, d => d[1]))])
+      .rangeRound([chartAttrs.height - chartAttrs.margin.bottom, chartAttrs.margin.top]);
 
-    let x = d3
-      .scaleLinear()
-      .domain([0, data.length])
-      .range([0, attrs.width]);
+    const color = d3
+      .scaleOrdinal()
+      .domain(series.map(d => d.key))
+      .range(d3.schemeSpectral[series.length])
+      .unknown('#ccc');
 
-    let yAxis = d3.axisLeft(y);
+    // A function to format the value in the tooltip.
+    const formatValue = x => (isNaN(x) ? 'N/A' : x.toLocaleString('en'));
 
     // create svg
     let svg = d3
@@ -100,35 +93,48 @@ const d3Chart = {
       .append('svg')
       .attr('width', chartAttrs.width)
       .attr('height', chartAttrs.height)
-      .attr('viewBox', [-chartAttrs.width / 2, -chartAttrs.height / 2, chartAttrs.width, chartAttrs.height]);
+      .attr('viewBox', [0, 0, chartAttrs.width, chartAttrs.height])
+      .attr('style', 'max-width: 100%; height: auto;');
 
-    svg.append('g').attr('transform', `translate(${chartAttrs.margin},${chartAttrs.margin})`);
-
+    // Append a group for each series, and a rect for each element in the series.
     svg
-      .selectAll('g')
-      .data(series)
-      .enter()
       .append('g')
+      .selectAll()
+      .data(series)
+      .join('g')
+      .attr('fill', d => color(d.key))
       .selectAll('rect')
-      .data(d => d)
-      .enter()
-      .append('rect')
-      .attr('x', (d, i) => x(i))
-      .attr('width', attrs.width / data.length)
-      .attr('height', d => y(d[0]) - y(d[1]))
+      .data(D => D.map(d => ((d.key = D.key), d)))
+      .join('rect')
+      .attr('x', d => x(d.data[0]))
       .attr('y', d => y(d[1]))
-      .attr('fill', (d, i) => {
-        return attrs.color(i);
-      });
+      .attr('height', d => y(d[0]) - y(d[1]))
+      .attr('width', x.bandwidth())
+      .append('title')
+      .text(d => `${d.data[0]} ${d.key}\n${formatValue(d.data[1].get(d.key).population)}`);
 
-    svg.append('g').call(yAxis);
-    return svg.node()
+    // Append the horizontal axis.
+    svg
+      .append('g')
+      .attr('transform', `translate(0,${chartAttrs.height - chartAttrs.margin.bottom})`)
+      .call(d3.axisBottom(x).tickSizeOuter(0))
+      .call(g => g.selectAll('.domain').remove());
+
+    // Append the vertical axis.
+    svg
+      .append('g')
+      .attr('transform', `translate(${chartAttrs.margin.left},0)`)
+      .call(d3.axisLeft(y).ticks(null, 's'))
+      .call(g => g.selectAll('.domain').remove());
+
+    // Return the chart with the color scale as a property (for the legend).
+    return Object.assign(svg.node(), { scales: { color } });
   },
   getBarChartAttributes() {
     return {
-      margin: 0,
-      width: 800,
-      height: 475,
+      margin: { top: 10, right: 10, bottom: 20, left: 40 },
+      width: 928,
+      height: 500,
       color: d3
         .scaleOrdinal()
         .domain([0, 3])
