@@ -152,7 +152,7 @@ const d3Chart = {
     const data = this.htmlTableToJson(chart);
     const headers = Object.keys(data[0]);
     const pieArcData = d3.pie().value(d => {
-      return d.value;
+      return d[headers[1]];
     })(data);
 
     const arcLabel = d3
