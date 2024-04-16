@@ -1,9 +1,100 @@
 ---
 chart:
 - sys:
-    id: 2RVFcNYVNVZKIesD7CmFYU
+    id: 6aJjPySvRLkhDBAszkvZq3
+    created_at: !ruby/object:DateTime 2024-03-26 19:44:20.082000000 Z
+    updated_at: !ruby/object:DateTime 2024-04-16 01:47:44.168000000 Z
     content_type_id: chart
-    revision: 1
+    revision: 3
+  chart_title: Number of Cases
+  chart_type: D3 Pie
+  chart_body: |-
+    |case_type             |number_of_cases|
+    |----------------------|---------------|
+    |Dispute about software|1              |
+    |Trafficking in website|1              |
+    |Webscraping           |2              |
+    |Video game cheating   |2              |
+    |Unauthorized use of   |3              |
+    |Dispute unrelated to  |5              |
+- sys:
+    id: 6AQXxy8qPUElWHoqaD2DrD
+    created_at: !ruby/object:DateTime 2024-04-11 15:41:58.697000000 Z
+    updated_at: !ruby/object:DateTime 2024-04-16 01:46:26.458000000 Z
+    content_type_id: chart
+    revision: 2
+  chart_title: Things
+  chart_type: D3 Pie
+  chart_body: |
+    |label                 |value          |
+    |----------------------|---------------|
+    |one                   |20             |
+    |two                   |50             |
+    |three                 |30             |
+- sys:
+    id: 3HF1hPBsiYn0rbwSoaH3Cz
+    created_at: !ruby/object:DateTime 2024-04-14 00:02:28.551000000 Z
+    updated_at: !ruby/object:DateTime 2024-04-16 19:11:43.781000000 Z
+    content_type_id: chart
+    revision: 4
+  chart_title: Financial Relationship of Participants to Outcome
+  chart_type: D3 Stacked Vertical Bar
+  chart_body: |-
+    Type| Org | Count
+    |--------------|--------|---------------|
+    No Direct Financial Benefit |Nonprofit org (user) |6|
+    Direct Financial Benefit|Nonprofit org (user) |7|
+    No Direct Financial Benefit |Nonprofit org (trade association)|5|
+    Direct Financial Benefit|Nonprofit org (trade association) |4|
+    No Direct Financial Benefit |Nonprofit org  |5|
+    Direct Financial Benefit|Nonprofit org  |9|
+    No Direct Financial Benefit |Law Clinic (individual client)|10|
+    Direct Financial Benefit|Law Clinic (individual client)|13|
+    No Direct Financial Benefit |Law Clinic |20|
+    Direct Financial Benefit|Law Clinic |10|
+    No Direct Financial Benefit |Individual|12|
+    Direct Financial Benefit|Individual|19|
+    No Direct Financial Benefit |Corporation|2|
+    Direct Financial Benefit|Corporation|30|
+    No Direct Financial Benefit |Community Org|15|
+    Direct Financial Benefit|Community Org|19|
+    No Direct Financial Benefit |Academic (institution)|10|
+    Direct Financial Benefit|Academic (institution)|3|
+    No Direct Financial Benefit |Academic (individual)|23|
+    Direct Financial Benefit|Academic (individual)|12|
+- sys:
+    id: 3ZMZpFUL9QY9qG3D8tGkpB
+    created_at: !ruby/object:DateTime 2024-04-14 21:11:15.420000000 Z
+    updated_at: !ruby/object:DateTime 2024-04-16 01:41:45.704000000 Z
+    content_type_id: chart
+    revision: 2
+  chart_title: Monthly Fruit Sales
+  chart_type: D3 Stacked Vertical Bar
+  chart_body: |-
+    | date                                                      | fruit    | sales |
+    | --------------------------------------------------------- | -------- | ----- |
+    | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | apples   | 3840  |
+    | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | bananas  | 1920  |
+    | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | cherries | 960   |
+    | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | durians  | 400   |
+    | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | apples   | 1600  |
+    | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | bananas  | 1440  |
+    | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | cherries | 960   |
+    | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | durians  | 400   |
+    | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | apples   | 640   |
+    | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | bananas  | 960   |
+    | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | cherries | 640   |
+    | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | durians  | 400   |
+    | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | apples   | 320   |
+    | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | bananas  | 480   |
+    | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | cherries | 640   |
+    | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | durians  | 400   |
+- sys:
+    id: 2RVFcNYVNVZKIesD7CmFYU
+    created_at: !ruby/object:DateTime 2024-04-15 22:57:59.284000000 Z
+    updated_at: !ruby/object:DateTime 2024-04-16 01:41:22.541000000 Z
+    content_type_id: chart
+    revision: 3
   chart_title: Population by Age and State
   chart_type: D3 Stacked Vertical Bar
   chart_body: |-

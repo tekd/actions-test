@@ -39,23 +39,28 @@ const d3Chart = {
   createBarChart(chart) {
     // https://observablehq.com/@d3/stacked-bar-chart/2
     let data = this.htmlTableToJson(chart);
+    let headers = Object.keys(data[0]);
+
+    // headers[0] xAxis - state
+    // headers[1] stacked content - age
+    // headers[2] yAXIS - population
 
     // Determine the series that need to be stacked.
+   
     const series = d3
       .stack()
-      .keys(d3.union(data.map(d => d.age))) // distinct series keys, in input order
-      .value(([, D], key) => D.get(key).population)(
+      .keys(d3.union(data.map(d => d[headers[1]]))) // distinct series keys, in input order
+      .value(([, D], key) => D.get(key)[headers[2]])(
       // get value for each series key and stack
       d3.index(
         data,
-        d => d.state,
-        d => d.age
+        d => d[headers[0]], // x axis
+        d => d[headers[1]] // stacked content
       )
     ); // group by stack then series key
     console.log(data);
-
     console.log(series);
-
+// debugger
     this.appendChartContainer(chart);
 
     let chartAttrs = this.getBarChartAttributes();
@@ -66,8 +71,8 @@ const d3Chart = {
       .domain(
         d3.groupSort(
           data,
-          D => -d3.sum(D, d => d.population),
-          d => d.state
+          D => -d3.sum(D, d => d[headers[2]]),
+          d => d[headers[0]]
         )
       )
       .range([chartAttrs.margin.left, chartAttrs.width - chartAttrs.margin.right])
@@ -111,7 +116,7 @@ const d3Chart = {
       .attr('height', d => y(d[0]) - y(d[1]))
       .attr('width', x.bandwidth())
       .append('title')
-      .text(d => `${d.data[0]} ${d.key}\n${formatValue(d.data[1].get(d.key).population)}`);
+      .text(d => `${d.data[0]} ${d.key}\n${formatValue(d.data[1].get(d.key)[headers[2]])}`);
 
     // Append the horizontal axis.
     svg
@@ -145,7 +150,7 @@ const d3Chart = {
     // begin vars
     let chartAttrs = this.getPieChartAttributes();
     const data = this.htmlTableToJson(chart);
-
+    const headers = Object.keys(data[0]);
     const pieArcData = d3.pie().value(d => {
       return d.value;
     })(data);
@@ -187,7 +192,7 @@ const d3Chart = {
       .join('path')
       .attr('fill', (d, i) => chartAttrs.color(i))
       .attr('d', arcPie)
-      .attr('title', d => d.label);
+      .attr('title', d => d[headers[0]]);
 
     svg
       .append('g')
@@ -221,7 +226,7 @@ const d3Chart = {
       })
       .attr('text-anchor', d => (midAngle(d) < Math.PI ? 'start' : 'end'))
       .text(d => {
-        return d.data.label;
+        return d.data[headers[0]];
       });
 
     svg
@@ -238,7 +243,7 @@ const d3Chart = {
         return `translate(${pieCenter})`;
       })
       .text(d => {
-        return d.value;
+        return d[headers[1]];
       });
   },
   /* pie chart methods start */
