@@ -1,0 +1,43 @@
+---
+layout: default
+title: D3 Testing Page
+description:
+seo_image_path: #'/images/media/filename.jpg'
+chart: true
+---
+
+<main role="main">
+  <!-- main content starts here -->
+
+  <section class="top-section top-section--purple">
+    <div class="row">
+      <div class="medium-12 column">
+        <h1>{{page.title}}</h1>
+        <p class="top-section__tagline">{{page.subtitle}}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="row">
+      <div class="column large-12">
+
+
+        {% assign pie_charts = site.data.contentful.charts.chart | where: 'chart_type','D3 Pie' %} {% for
+        pie_chart in pie_charts %}
+        <div class="d3-chart d3-pie-chart" id="{{pie_chart.chart_title | slugify}}">
+          {{pie_chart.chart_body | markdownify}}
+        </div>
+        {% endfor %} 
+ß
+        
+        {% assign bar_charts = site.data.contentful.charts.chart | where: 'chart_type',
+        'D3 Stacked Vertical Bar'  %} {% for bar_chart in bar_charts %}
+        <div class="d3-chart d3-bar-chart" id="{{bar_chart.chart_title | slugify}}">
+          {{bar_chart.chart_body | markdownify}}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</main>

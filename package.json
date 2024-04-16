@@ -57,6 +57,8 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
-    "gulp": "^4.0.2"
+    "d3": "^7.9.0",
+    "gulp": "^4.0.2",
+    "mermaid": "^10.9.0"
   }
 }
