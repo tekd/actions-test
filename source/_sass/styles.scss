@@ -3,27 +3,43 @@
 }
 
 // Breakpoints
-$small-only: screen and (max-width: 39.9375em);
-$touch: screen and (max-width: 64em);
-$medium: screen and (min-width: 40em);
-$medium-only: screen and (min-width: 40em) and (max-width: 63.9375em);
-$large: screen and (min-width: 64em);
+$small-only: screen and
+  (
+    max-width: 39.9375em
+  );
+$touch: screen and
+  (
+    max-width: 64em
+  );
+$medium: screen and
+  (
+    min-width: 40em
+  );
+$medium-only: screen and
+  (
+    min-width: 40em
+  )
+  and
+  (
+    max-width: 63.9375em
+  );
+$large: screen and
+  (
+    min-width: 64em
+  );
 
 @import 'breakpoint';
 @import 'base';
 @import 'markdown_tables';
+@import 'd3';
 
-$white: #FFFFFF;
+$white: #ffffff;
 $black: #000000;
-$gray-300: #24292C;
-$gray-200: #696C6D;
-$gray-100: #F8F8F8;
-$yellow: #EEC357;
-$purple: #5A43ED;
+$gray-300: #24292c;
+$gray-200: #696c6d;
+$gray-100: #f8f8f8;
+$yellow: #eec357;
+$purple: #5a43ed;
 $blue-200: #252346;
-$blue-100: #30AAB3;
-$red: #E64448;
-
-svg {
-  border: black solid 1px;
-}
+$blue-100: #30aab3;
+$red: #e64448;

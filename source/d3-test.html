@@ -29,7 +29,9 @@ chart: true
           {{pie_chart.chart_body | markdownify}}
         </div>
         {% endfor %} 
-ß
+
+        
+{% comment %}
         
         {% assign bar_charts = site.data.contentful.charts.chart | where: 'chart_type',
         'D3 Stacked Vertical Bar'  %} {% for bar_chart in bar_charts %}
@@ -37,6 +39,7 @@ chart: true
           {{bar_chart.chart_body | markdownify}}
         </div>
         {% endfor %}
+{% endcomment %}
       </div>
     </div>
   </section>

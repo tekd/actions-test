@@ -46,7 +46,7 @@ const d3Chart = {
     // headers[2] yAXIS - population
 
     // Determine the series that need to be stacked.
-   
+
     const series = d3
       .stack()
       .keys(d3.union(data.map(d => d[headers[1]]))) // distinct series keys, in input order
@@ -60,7 +60,7 @@ const d3Chart = {
     ); // group by stack then series key
     console.log(data);
     console.log(series);
-// debugger
+    // debugger
     this.appendChartContainer(chart);
 
     let chartAttrs = this.getBarChartAttributes();
@@ -147,35 +147,39 @@ const d3Chart = {
     };
   },
   createPieChart(chart) {
-    // begin vars
-    let chartAttrs = this.getPieChartAttributes();
+    this.appendChartContainer(chart);
+
     const data = this.htmlTableToJson(chart);
     const headers = Object.keys(data[0]);
-    const pieArcData = d3.pie().value(d => {
+
+    // begin vars
+    let chartAttrs = this.getPieChartAttributes();
+    console.log(chartAttrs, 'chartAttrs');
+
+    // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
+    let radius = Math.min(chartAttrs.width, chartAttrs.height) / 2 - chartAttrs.margin;
+
+    // Compute the position of each group on the pie
+    const pie = d3.pie().value(d => {
       return d[headers[1]];
     })(data);
+
+    // shape helper to build arcs:
+    const arc = d3
+      .arc()
+      .innerRadius(chartAttrs.innerRadius)
+      .outerRadius(chartAttrs.outerRadius);
 
     const arcLabel = d3
       .arc()
       .innerRadius(chartAttrs.innerRadius)
-      .outerRadius(chartAttrs.labelRadius)
-      .cornerRadius(chartAttrs.cornerRadius);
-
-    const arcPie = d3
-      .arc()
-      .innerRadius(chartAttrs.innerRadius)
-      .outerRadius(chartAttrs.outerRadius)
-      .padRadius(chartAttrs.padRadius)
-      .padAngle(chartAttrs.padAngle)
-      .cornerRadius(chartAttrs.cornerRadius);
+      .outerRadius(chartAttrs.labelRadius);
 
     const midAngle = d => {
       return d.startAngle + (d.endAngle - d.startAngle) / 2;
     };
 
     // end vars
-
-    this.appendChartContainer(chart);
 
     // create the svg
     let svg = d3
@@ -188,16 +192,16 @@ const d3Chart = {
     svg
       .append('g')
       .selectAll('path')
-      .data(pieArcData)
+      .data(pie)
       .join('path')
       .attr('fill', (d, i) => chartAttrs.color(i))
-      .attr('d', arcPie)
+      .attr('d', arc)
       .attr('title', d => d[headers[0]]);
 
     svg
       .append('g')
       .selectAll('polyline')
-      .data(pieArcData)
+      .data(pie)
       .join('polyline')
       .attr('stroke', '#aaa')
       .attr('opacity', '.3')
@@ -205,7 +209,7 @@ const d3Chart = {
       .attr('fill', 'none')
       .attr('points', d => {
         const pos = arcLabel.centroid(d);
-        const pieCenter = arcPie.centroid(d);
+        const pieCenter = arc.centroid(d);
         pos[0] = chartAttrs.labelRadius * 1 * (midAngle(d) < Math.PI ? 1 : -1);
 
         return [pieCenter, arcLabel.centroid(d), pos];
@@ -217,7 +221,7 @@ const d3Chart = {
       .attr('font-size', 14)
       .attr('fill', 'black')
       .selectAll('text')
-      .data(pieArcData)
+      .data(pie)
       .join('text')
       .attr('transform', d => {
         var pos = arcLabel.centroid(d);
@@ -236,10 +240,10 @@ const d3Chart = {
       .attr('text-anchor', 'middle')
       .attr('fill', '#000')
       .selectAll('text')
-      .data(pieArcData)
+      .data(pie)
       .join('text')
       .attr('transform', d => {
-        const pieCenter = arcPie.centroid(d);
+        const pieCenter = arc.centroid(d);
         return `translate(${pieCenter})`;
       })
       .text(d => {
@@ -249,15 +253,11 @@ const d3Chart = {
   /* pie chart methods start */
   getPieChartAttributes() {
     return {
-      width: 1000,
-      height: 500,
-      radius: 0,
+      width: 600,
+      height: 450,
       innerRadius: 0,
       outerRadius: 200,
       labelRadius: 300,
-      cornerRadius: 0,
-      padRadius: 0,
-      padAngle: 0,
       color: d3
         .scaleOrdinal()
         .domain([0, 6])
@@ -268,13 +268,13 @@ const d3Chart = {
     console.log(chart);
 
     let chartLocation = document.getElementById(chart.id);
-    console.log(chartLocation, 'hi');
+    
     let visualizationContainer = document.createElement('div');
     visualizationContainer.setAttribute('id', `${chart.id}-chart`);
     visualizationContainer.setAttribute('class', 'visualization');
     chartLocation.insertAdjacentElement('afterend', visualizationContainer);
   },
-  /* pie chart methids end */
+  /* pie chart methods end */
   createChart(chart) {
     let jsonData = this.htmlTableToJson(chart);
   },
