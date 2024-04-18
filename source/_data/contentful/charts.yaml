@@ -34,9 +34,9 @@ chart:
 - sys:
     id: 3HF1hPBsiYn0rbwSoaH3Cz
     created_at: !ruby/object:DateTime 2024-04-14 00:02:28.551000000 Z
-    updated_at: !ruby/object:DateTime 2024-04-16 19:11:43.781000000 Z
+    updated_at: !ruby/object:DateTime 2024-04-18 13:31:39.527000000 Z
     content_type_id: chart
-    revision: 4
+    revision: 5
   chart_title: Financial Relationship of Participants to Outcome
   chart_type: D3 Stacked Vertical Bar
   chart_body: |-
@@ -65,9 +65,9 @@ chart:
 - sys:
     id: 3ZMZpFUL9QY9qG3D8tGkpB
     created_at: !ruby/object:DateTime 2024-04-14 21:11:15.420000000 Z
-    updated_at: !ruby/object:DateTime 2024-04-16 01:41:45.704000000 Z
+    updated_at: !ruby/object:DateTime 2024-04-18 13:33:49.272000000 Z
     content_type_id: chart
-    revision: 2
+    revision: 4
   chart_title: Monthly Fruit Sales
   chart_type: D3 Stacked Vertical Bar
   chart_body: |-
@@ -92,9 +92,9 @@ chart:
 - sys:
     id: 2RVFcNYVNVZKIesD7CmFYU
     created_at: !ruby/object:DateTime 2024-04-15 22:57:59.284000000 Z
-    updated_at: !ruby/object:DateTime 2024-04-16 01:41:22.541000000 Z
+    updated_at: !ruby/object:DateTime 2024-04-18 13:31:15.982000000 Z
     content_type_id: chart
-    revision: 3
+    revision: 4
   chart_title: Population by Age and State
   chart_type: D3 Stacked Vertical Bar
   chart_body: |-
@@ -568,3 +568,18 @@ chart:
     | WI    | 80   | 241747     |
     | WY    | 80   | 19682      |
     | PR    | 80   | 148963     |
+- sys:
+    id: 5KHuSTkR750JGeZy52Gpcl
+    created_at: !ruby/object:DateTime 2024-04-17 23:21:22.192000000 Z
+    updated_at: !ruby/object:DateTime 2024-04-17 23:21:22.192000000 Z
+    content_type_id: chart
+    revision: 1
+  chart_title: Stacked Groups
+  chart_type: D3 Stacked Vertical Bar
+  chart_body: |-
+    | group    | Nitrogen | normal | stress |
+    | -------- | -------- | ------ | ------ |
+    | banana   | 12       | 1      | 13     |
+    | poacee   | 6        | 6      | 33     |
+    | sorgho   | 11       | 28     | 12     |
+    | triticum | 19       | 6      | 1      |
