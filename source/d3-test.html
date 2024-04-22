@@ -22,7 +22,7 @@ chart: true
     <div class="row">
       <div class="column large-12">
 
-{%comment%}
+
         {% assign pie_charts = site.data.contentful.charts.chart | where: 'chart_type','D3 Pie' %} {% for
         pie_chart in pie_charts %}
         <div class="d3-chart d3-pie-chart" id="{{pie_chart.chart_title | slugify}}">
@@ -30,7 +30,7 @@ chart: true
         </div>
         {% endfor %} 
 
-{% endcomment %}
+
         
         {% assign bar_charts = site.data.contentful.charts.chart | where: 'chart_type',
         'D3 Stacked Vertical Bar'  %} {% for bar_chart in bar_charts %}

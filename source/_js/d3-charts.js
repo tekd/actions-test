@@ -144,87 +144,12 @@ const d3Chart = {
         return y(d[0]) - y(d[1]);
       })
       .attr('width', x.bandwidth());
-
-    /*
-    // const x = d3
-    //   .scaleBand()
-    //   .domain(
-    //     d3.groupSort(
-    //       data,
-    //       D => -d3.sum(D, d => d[headers[2]]),
-    //       d => d[headers[0]]
-    //     )
-    //   )
-    //   .range([chartAttrs.margin.left, chartAttrs.width - chartAttrs.margin.right])
-    //   .padding(0.1);
-
-    const y = d3
-      .scaleLinear()
-      .domain([0, d3.max(series, d => d3.max(d, d => d[1]))])
-      .rangeRound([chartAttrs.height - chartAttrs.margin.bottom, chartAttrs.margin.top]);
-
-    const color = d3
-      .scaleOrdinal()
-      .domain(series.map(d => d.key))
-      .range(d3.schemeSpectral[series.length])
-      .unknown('#ccc');
-
-    // A function to format the value in the tooltip.
-    const formatValue = x => (isNaN(x) ? 'N/A' : x.toLocaleString('en'));
-
-    // create svg
-    let svg = d3
-      .select(`#${chart.id}-chart`)
-      .append('svg')
-      .attr('width', chartAttrs.width)
-      .attr('height', chartAttrs.height)
-      .attr('viewBox', [0, 0, chartAttrs.width, chartAttrs.height])
-      .attr('style', 'max-width: 100%; height: auto;');
-
-    // Append a group for each series, and a rect for each element in the series.
-    svg
-      .append('g')
-      .selectAll()
-      .data(series)
-      .join('g')
-      .attr('fill', d => color(d.key))
-      .selectAll('rect')
-      .data(D => D.map(d => ((d.key = D.key), d)))
-      .join('rect')
-      .attr('x', d => x(d.data[0]))
-      .attr('y', d => y(d[1]))
-      .attr('height', d => y(d[0]) - y(d[1]))
-      .attr('width', x.bandwidth())
-      .append('title')
-      .text(d => `${d.data[0]} ${d.key}\n${formatValue(d.data[1].get(d.key)[headers[2]])}`);
-
-    // Append the horizontal axis.
-    svg
-      .append('g')
-      .attr('transform', `translate(0,${chartAttrs.height - chartAttrs.margin.bottom})`)
-      .call(d3.axisBottom(x).tickSizeOuter(0))
-      .call(g => g.selectAll('.domain').remove());
-
-    // Append the vertical axis.
-    svg
-      .append('g')
-      .attr('transform', `translate(${chartAttrs.margin.left},0)`)
-      .call(d3.axisLeft(y).ticks(null, 's'))
-      .call(g => g.selectAll('.domain').remove());
-
-    // Return the chart with the color scale as a property (for the legend).
-    return Object.assign(svg.node(), { scales: { color } });
-    */
   },
   getBarChartAttributes() {
     return {
       margin: { top: 10, right: 10, bottom: 20, left: 40 },
       width: 928,
-      height: 500,
-      color: d3
-        .scaleOrdinal()
-        .domain([0, 3])
-        .range(['pink', 'teal', 'yellow', 'magenta'])
+      height: 500
     };
   },
   createPieChart(chart) {
