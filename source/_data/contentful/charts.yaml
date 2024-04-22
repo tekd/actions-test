@@ -39,25 +39,44 @@ chart:
     revision: 4
   chart_title: Monthly Fruit Sales
   chart_type: D3 Stacked Vertical Bar
-  chart_body: |-
-    | date                                                      | fruit    | sales |
-    | --------------------------------------------------------- | -------- | ----- |
-    | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | apples   | 3840  |
-    | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | bananas  | 1920  |
-    | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | cherries | 960   |
-    | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | durians  | 400   |
-    | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | apples   | 1600  |
-    | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | bananas  | 1440  |
-    | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | cherries | 960   |
-    | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | durians  | 400   |
-    | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | apples   | 640   |
-    | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | bananas  | 960   |
-    | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | cherries | 640   |
-    | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | durians  | 400   |
-    | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | apples   | 320   |
-    | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | bananas  | 480   |
-    | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | cherries | 640   |
-    | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | durians  | 400   |
+  chart_body: |
+    | date                                                      | apples |bananas | cherries | durians |
+    | --------------------------------------------------------- | -------|------- | -------- | ------- |
+    | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | 3840   | 0      | 0        | 0       |
+    | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | 0      | 1920   | 0        | 0       |
+    | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | 0      | 0      | 960      | 0       |
+    | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | 0      | 0      | 0        | 400     |
+    | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | 1600   | 0      | 0        | 0       |
+    | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | 0      | 1440   | 0        | 0       |
+    | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | 0      | 0      | 960      | 0       |
+    | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | 0      | 0      | 0        | 400     |
+    | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | 640    | 0      | 0        | 0       |
+    | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | 0      | 960    | 0        | 0       |
+    | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | 0      | 0      | 640      | 0       |
+    | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | 0      | 0      | 0        | 400     |
+    | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | 320    | 0      | 0        | 0       |
+    | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | 0      | 480    | 0        | 0       |
+    | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | 0      | 0      | 640      | 0       |
+    | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | 0      | 0      | 0        | 400     |
+  # chart_body: |-
+  #   | date                                                      | fruit    | sales |
+  #   | --------------------------------------------------------- | -------- | ----- |
+  #   | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | apples   | 3840  |
+  #   | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | bananas  | 1920  |
+  #   | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | cherries | 960   |
+  #   | Wed Dec 31 2014 19:00:00 GMT-0500 (Eastern Standard Time) | durians  | 400   |
+  #   | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | apples   | 1600  |
+  #   | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | bananas  | 1440  |
+  #   | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | cherries | 960   |
+  #   | Sat Jan 31 2015 19:00:00 GMT-0500 (Eastern Standard Time) | durians  | 400   |
+  #   | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | apples   | 640   |
+  #   | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | bananas  | 960   |
+  #   | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | cherries | 640   |
+  #   | Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time) | durians  | 400   |
+  #   | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | apples   | 320   |
+  #   | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | bananas  | 480   |
+  #   | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | cherries | 640   |
+  #   | Tue Mar 31 2015 20:00:00 GMT-0400 (Eastern Daylight Time) | durians  | 400   |
 - sys:
     id: 5KHuSTkR750JGeZy52Gpcl
     created_at: !ruby/object:DateTime 2024-04-17 23:21:22.192000000 Z
