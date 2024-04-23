@@ -63,7 +63,7 @@ const d3Chart = {
     let headers = data.columns;
 
     // List of groups = species here = value of the first column called group -> I show them on the X axis
-    let groups = d3.map(data, function(data) {
+    let groups = d3.map(data, function (data) {
       return data[headers[0]]; //requires the x axis to be the first column
     });
 
@@ -124,23 +124,23 @@ const d3Chart = {
       .data(stackedData)
       .enter()
       .append('g')
-      .attr('fill', function(d) {
+      .attr('fill', function (d) {
         return color(d);
       })
       .selectAll('rect')
       // enter a second time = loop subgroup per subgroup to add all rectangles
-      .data(function(d) {
+      .data(function (d) {
         return d;
       })
       .enter()
       .append('rect')
-      .attr('x', function(d) {
+      .attr('x', function (d) {
         return x(d.data[headers[0]]);
       })
-      .attr('y', function(d) {
+      .attr('y', function (d) {
         return y(d[1]);
       })
-      .attr('height', function(d) {
+      .attr('height', function (d) {
         return y(d[0]) - y(d[1]);
       })
       .attr('width', x.bandwidth());
@@ -215,9 +215,9 @@ const d3Chart = {
       .attr('points', d => {
         const pos = arcLabel.centroid(d);
         const pieCenter = arc.centroid(d);
-        pos[0] = chartAttrs.labelRadius * 1 * (midAngle(d) < Math.PI ? 1 : -1);
-
-        return [pieCenter, arcLabel.centroid(d), pos];
+        pos[0] = chartAttrs.labelRadius * 1.3 * (midAngle(d) < Math.PI ? 1 : -1);
+        // return [pieCenter, arcLabel.centroid(d), pos];
+        return [arcLabel.centroid(d), pos];
       });
 
     svg
@@ -229,11 +229,12 @@ const d3Chart = {
       .data(pie)
       .join('text')
       .attr('transform', d => {
-        var pos = arcLabel.centroid(d);
-        pos[0] = chartAttrs.labelRadius * 1 * (midAngle(d) < Math.PI ? 1 : -1);
+        const pos = arcLabel.centroid(d);
+        pos[0] = chartAttrs.labelRadius * 1 * (midAngle(d) < Math.PI ? 0.89 : -1.3);
         return `translate(${pos})`;
       })
-      .attr('text-anchor', d => (midAngle(d) < Math.PI ? 'start' : 'end'))
+      .attr('text-anchor', d => (midAngle(d) < Math.PI ? 'start' : 'start'))
+      .attr('dy', '-5')
       .text(d => {
         return d.data[headers[0]];
       });
@@ -253,6 +254,49 @@ const d3Chart = {
       })
       .text(d => {
         return d[headers[1]];
+      });
+
+    // Value inside slice
+    svg
+      .append('g')
+      .selectAll('polyline')
+      .data(pie)
+      .enter()
+      .append('text')
+      .text(d => d.data.number_of_cases)
+      .attr('transform', d => `translate(${arcLabel.centroid(d)})`)
+      .style('font-size', 20);
+
+    // Percentage
+    svg
+      .append('g')
+      .attr('font-family', 'sans-serif')
+      .attr('font-size', 13)
+      .attr('fill', 'gray')
+      .selectAll('text')
+      .data(pie)
+      .join('text')
+      .attr('transform', d => {
+        const pos = arcLabel.centroid(d);
+        pos[0] = chartAttrs.labelRadius * 1 * (midAngle(d) < Math.PI ? 1.3 : -1.175);
+        return `translate(${pos})`;
+      })
+      .attr('text-anchor', d => (arc(d) < Math.PI ? 'start' : 'end'))
+      .text(d => `${Math.round((d.endAngle - d.startAngle) / (2 * Math.PI) * 100 * 10) / 10}%`)
+      .attr('dy', '15');
+
+    // Circle dot
+    svg
+      .selectAll('marker')
+      .data(pie)
+      .enter()
+      .append('circle')
+      .style('stroke', 'gray')
+      .style('fill', 'gray')
+      .attr('r', 2)
+      .attr('transform', d => {
+        const pos = arcLabel.centroid(d);
+        return `translate(${pos})`;
       });
   },
   /* pie chart methods start */
