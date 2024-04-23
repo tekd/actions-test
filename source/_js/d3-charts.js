@@ -319,7 +319,7 @@ const d3Chart = {
     let visualizationContainer = document.createElement('div');
     visualizationContainer.setAttribute('id', `${chart.id}-chart`);
     visualizationContainer.setAttribute('class', 'visualization');
-    chartLocation.insertAdjacentElement('afterend', visualizationContainer);
+    chartLocation.insertAdjacentElement('beforebegin', visualizationContainer);
   },
   /* pie chart methods end */
   createChart(chart) {
