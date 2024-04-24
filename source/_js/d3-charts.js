@@ -212,7 +212,7 @@ const d3Chart = {
               .attr('opacity', '.4');
           }
         });
-        document.querySelectorAll('.pie-legend-item').forEach(item => {
+        document.querySelectorAll(`.pie-legend-item--${chart.id}`).forEach(item => {
           if (parseInt(item.getAttribute('data-item')) !== d.index) {
             item.style.opacity = '.4';
           }
@@ -225,7 +225,7 @@ const d3Chart = {
             .transition()
             .attr('opacity', '1');
         });
-        document.querySelectorAll('.pie-legend-item').forEach(item => {
+        document.querySelectorAll(`.pie-legend-item--${chart.id}`).forEach(item => {
           if (parseInt(item.getAttribute('data-item')) !== d.index) {
             item.style.opacity = '1';
           }
@@ -242,7 +242,7 @@ const d3Chart = {
       .attr('stroke-width', '1px')
       .attr('fill', 'none')
       .attr('data-item', d => d.index)
-      .attr('class', 'pie-legend-item')
+      .attr('class', `pie-legend-item--${chart.id}`)
       .attr('points', d => {
         const pos = arcLabel.centroid(d);
         const pieCenter = arc.centroid(d);
@@ -259,7 +259,7 @@ const d3Chart = {
       .selectAll('text')
       .data(pie)
       .join('text')
-      .attr('class', 'pie-legend-item')
+      .attr('class', `pie-legend-item--${chart.id}`)
       .attr('data-item', d => d.index)
       .attr('transform', d => {
         const pos = arcLabel.centroid(d);
@@ -298,7 +298,7 @@ const d3Chart = {
       .append('text')
       .text(d => d.data.number_of_cases)
       .attr('transform', d => `translate(${arcLabel.centroid(d)})`)
-      .attr('class', 'pie-legend-item')
+      .attr('class', `pie-legend-item--${chart.id}`)
       .attr('data-item', d => d.index)
       .style('font-size', 20);
 
@@ -318,7 +318,7 @@ const d3Chart = {
       })
       .attr('text-anchor', d => (arc(d) < Math.PI ? 'start' : 'end'))
       .text(d => `${Math.round((d.endAngle - d.startAngle) / (2 * Math.PI) * 100 * 10) / 10}%`)
-      .attr('class', 'pie-legend-item')
+      .attr('class', `pie-legend-item--${chart.id}`)
       .attr('data-item', d => d.index)
       .attr('dy', '15');
 
