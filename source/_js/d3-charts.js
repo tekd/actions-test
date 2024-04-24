@@ -124,23 +124,23 @@ const d3Chart = {
       .data(stackedData)
       .enter()
       .append('g')
-      .attr('fill', function (d) {
+      .attr('fill', d => {
         return color(d);
       })
       .selectAll('rect')
       // enter a second time = loop subgroup per subgroup to add all rectangles
-      .data(function (d) {
+      .data(d => {
         return d;
       })
       .enter()
       .append('rect')
-      .attr('x', function (d) {
+      .attr('x', d => {
         return x(d.data[headers[0]]);
       })
-      .attr('y', function (d) {
+      .attr('y', d => {
         return y(d[1]);
       })
-      .attr('height', function (d) {
+      .attr('height', d => {
         return y(d[0]) - y(d[1]);
       })
       .attr('width', x.bandwidth());
@@ -159,10 +159,10 @@ const d3Chart = {
     const headers = Object.keys(data[0]);
 
     // begin vars
-    let chartAttrs = this.getPieChartAttributes();
+    const chartAttrs = this.getPieChartAttributes();
 
     // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
-    let radius = Math.min(chartAttrs.width, chartAttrs.height) / 2 - chartAttrs.margin;
+    const radius = Math.min(chartAttrs.width, chartAttrs.height) / 2 - chartAttrs.margin;
 
     // Compute the position of each group on the pie
     const pie = d3.pie().value(d => {
@@ -201,7 +201,36 @@ const d3Chart = {
       .join('path')
       .attr('fill', (d, i) => chartAttrs.color(i))
       .attr('d', arc)
-      .attr('title', d => d[headers[0]]);
+      .attr('title', d => d[headers[0]])
+      .attr('data-item', d => d.index)
+      .on('mouseover', (e, d) => {
+        const decendents = Array.prototype.slice.call(e.target.parentNode.children);
+        decendents.forEach(child => {
+          if (parseInt(child.getAttribute('data-item')) !== d.index) {
+            d3.select(child)
+              .transition()
+              .attr('opacity', '.4');
+          }
+        });
+        document.querySelectorAll('.pie-legend-item').forEach(item => {
+          if (parseInt(item.getAttribute('data-item')) !== d.index) {
+            item.style.opacity = '.4';
+          }
+        });
+      })
+      .on('mouseout', (e, d) => {
+        const decendents = Array.prototype.slice.call(e.target.parentNode.children);
+        decendents.forEach(child => {
+          d3.select(child)
+            .transition()
+            .attr('opacity', '1');
+        });
+        document.querySelectorAll('.pie-legend-item').forEach(item => {
+          if (parseInt(item.getAttribute('data-item')) !== d.index) {
+            item.style.opacity = '1';
+          }
+        });
+      });
 
     svg
       .append('g')
@@ -212,6 +241,8 @@ const d3Chart = {
       .attr('opacity', '.3')
       .attr('stroke-width', '1px')
       .attr('fill', 'none')
+      .attr('data-item', d => d.index)
+      .attr('class', 'pie-legend-item')
       .attr('points', d => {
         const pos = arcLabel.centroid(d);
         const pieCenter = arc.centroid(d);
@@ -228,6 +259,8 @@ const d3Chart = {
       .selectAll('text')
       .data(pie)
       .join('text')
+      .attr('class', 'pie-legend-item')
+      .attr('data-item', d => d.index)
       .attr('transform', d => {
         const pos = arcLabel.centroid(d);
         pos[0] = chartAttrs.labelRadius * 1 * (midAngle(d) < Math.PI ? 0.89 : -1.3);
@@ -265,6 +298,8 @@ const d3Chart = {
       .append('text')
       .text(d => d.data.number_of_cases)
       .attr('transform', d => `translate(${arcLabel.centroid(d)})`)
+      .attr('class', 'pie-legend-item')
+      .attr('data-item', d => d.index)
       .style('font-size', 20);
 
     // Percentage
@@ -283,6 +318,8 @@ const d3Chart = {
       })
       .attr('text-anchor', d => (arc(d) < Math.PI ? 'start' : 'end'))
       .text(d => `${Math.round((d.endAngle - d.startAngle) / (2 * Math.PI) * 100 * 10) / 10}%`)
+      .attr('class', 'pie-legend-item')
+      .attr('data-item', d => d.index)
       .attr('dy', '15');
 
     // Circle dot
