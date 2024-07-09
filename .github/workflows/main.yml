@@ -38,4 +38,4 @@ jobs:
       - name: install npm dependencies
         run: npm install
       - name: deploy
-        run: npm run deploy
+        run: rm -rf .publish && npm run deploy
