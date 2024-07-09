@@ -90,6 +90,8 @@ GEM
     multi_json (1.15.0)
     nokogiri (1.13.8-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.8-x86_64-linux)
+      racc (~> 1.4)
     parallel (1.22.1)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
@@ -121,6 +123,7 @@ GEM
 PLATFORMS
   arm64-darwin-20
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   byebug
@@ -133,7 +136,7 @@ DEPENDENCIES
   kramdown-parser-gfm
 
 RUBY VERSION
-   ruby 3.1.0p0
+   ruby 3.1.4p223
 
 BUNDLED WITH
    2.3.5
