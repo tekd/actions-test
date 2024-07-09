@@ -27,6 +27,7 @@ jobs:
       - name: install npm dependencies
         run: npm install
       - name: Run data import and build scripts
+        run: bash automated_build.sh
         env:
           GH_EMAIL: ${{ secrets.GH_EMAIL }}
           GH_USERNAME: ${{ secrets.GH_USERNAME }}
