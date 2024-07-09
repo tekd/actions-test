@@ -32,6 +32,9 @@ jobs:
       - name: install npm dependencies
         run: npm install
       - name: Run data import and build scripts
-        run: bash automated_build.sh
+        run: | 
+          git config --global user.email "denny@objectively.is"
+          git config --global user.name "Denny Tek"
+          bash automated_build.sh
       - name: deploy
         run: npm run deploy
