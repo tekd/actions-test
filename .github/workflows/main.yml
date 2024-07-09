@@ -17,8 +17,6 @@ jobs:
         node-version: [16.x]
     steps:
       - uses: actions/checkout@v4
-      - run: git config --global user.email "denny@objectively.is"
-      - run: git config --global user.name "Denny Tek"
       - name: Set up Ruby 
         uses: ruby/setup-ruby@8575951200e472d5f2d95c625da0c7bec8217c42 
         with:
