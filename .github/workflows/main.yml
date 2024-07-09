@@ -24,7 +24,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
-      - name: Build
-        run: |
-          npm install
-          npm run deploy
+      - name: install npm dependencies
+        run: npm install
+      - name: Run data import and build scripts
+        env:
+          GH_EMAIL: ${{ secrets.GH_EMAIL }}
+          GH_USERNAME: ${{ secrets.GH_USERNAME }}
+          TEKD_TEST_SPACE_ID: ${{ secrets.TEKD_TEST_SPACE_ID }}
+          TEKD_TEST_ACCESS_TOKEN: ${{ secrets.TEKD_TEST_ACCESS_TOKEN }}
+      - name: deploy
+        run: npm run deploy
