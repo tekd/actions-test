@@ -2,6 +2,7 @@
 CWD=`pwd`
 
 # Clone Pages repository
+mkdir tmp
 cd /tmp
 git clone https://github.com/objectively/objectively-sandbox.git build
 cd build && git checkout -b gh-pages origin/gh-pages
