@@ -25,16 +25,15 @@ jobs:
         run: gem install bundler 
       - name: Install dependencies
         run: bundle install
+      - name: pull data
+        run: |
+          bundle exec jekyll contentful
+          bundle exec jekyll build
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
       - name: install npm dependencies
         run: npm install
-      - name: Run data import and build scripts
-        run: | 
-          git config --global user.email "denny@objectively.is"
-          git config --global user.name "Denny Tek"
-          bash automated_build.sh
       - name: deploy
         run: npm run deploy
