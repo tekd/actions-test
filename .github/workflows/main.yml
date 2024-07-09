@@ -25,6 +25,8 @@ jobs:
         run: gem install bundler 
       - name: Install dependencies
         run: bundle install
+      - name: check vars
+        run: echo "Contetnful space id: $TEKD_TEST_SPACE_ID *****"
       - name: pull data
         run: |
           bundle exec jekyll contentful
