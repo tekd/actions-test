@@ -12,8 +12,6 @@ on:
   push:
     branches: [ main ]
 env:
-  GH_EMAIL: ${{ secrets.GH_EMAIL }}
-  GH_USERNAME: ${{ secrets.GH_USERNAME }}
   TEKD_TEST_SPACE_ID: ${{ secrets.TEKD_TEST_SPACE_ID }}
   TEKD_TEST_ACCESS_TOKEN: ${{ secrets.TEKD_TEST_ACCESS_TOKEN }}
 jobs:
