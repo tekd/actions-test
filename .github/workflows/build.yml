@@ -2,6 +2,13 @@ name: build
 run-name: Jekyll Contentful Build and Deploy 🚀
 on:
   workflow_call:
+    secrets:
+      TEKD_TEST_SPACE_ID:
+        description: 'Contentful Space ID passed from the caller workflow'
+        required: true
+      TEKD_TEST_ACCESS_TOKEN:
+        description: 'Contentful Access Token passed from the caller workflow'
+        required: true
   push:
     branches: [ main ]
 env:
