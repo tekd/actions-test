@@ -128,7 +128,7 @@ gulp.task('push-gh-main', shell.task(['git push origin main']));
 
 gulp.task('push-gh-pages', () => gulp.src('_site/**/*', { dot: true }).pipe(ghPages({ force: true })));
 
-gulp.task('build', gulp.series('build:prod', 'push-gh-main'));
+gulp.task('build', gulp.series('build:prod', 'push-gh-main', 'push-gh-pages'));
 
 /* =========================================
   serve
