@@ -3,5 +3,5 @@ on:
   repository_dispatch:
     types: [publish-event]
 jobs:
-  call-workflow-2-in-local-repo:
+  call-build-workflow:
     uses: ./.github/workflows/build.yml
