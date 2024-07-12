@@ -1,4 +1,4 @@
-name: Jekyll Contentful Build and Deploy
+name: build
 run-name: Jekyll Contentful Build and Deploy 🚀
 on:
   push:
