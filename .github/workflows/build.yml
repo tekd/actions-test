@@ -1,6 +1,7 @@
 name: build
 run-name: Jekyll Contentful Build and Deploy 🚀
 on:
+  workflow_call:
   push:
     branches: [ main ]
 env:
