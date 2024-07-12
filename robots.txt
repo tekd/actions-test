@@ -1,1 +1,1 @@
-Sitemap: https://objectively.github.io/objectively-sandbox/sitemap.xml
+Sitemap: https://tekd.github.io/actions-test/sitemap.xml

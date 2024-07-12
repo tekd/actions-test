@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://objectively.github.io/objectively-sandbox/d3-test/</loc>
+<loc>https://tekd.github.io/actions-test/d3-test/</loc>
 </url>
 <url>
-<loc>https://objectively.github.io/objectively-sandbox/</loc>
+<loc>https://tekd.github.io/actions-test/</loc>
 </url>
 <url>
-<loc>https://objectively.github.io/objectively-sandbox/sandbox/</loc>
+<loc>https://tekd.github.io/actions-test/sandbox/</loc>
 </url>
 <url>
-<loc>https://objectively.github.io/objectively-sandbox/test/</loc>
+<loc>https://tekd.github.io/actions-test/test/</loc>
 </url>
 </urlset>
