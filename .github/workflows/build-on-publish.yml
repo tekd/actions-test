@@ -2,44 +2,6 @@ name: Jekyll Build on Contentful Publish Event
 on:
   repository_dispatch:
     types: [publish-event]
-env:
-  GH_EMAIL: ${{ secrets.GH_EMAIL }}
-  GH_USERNAME: ${{ secrets.GH_USERNAME }}
-  TEKD_TEST_SPACE_ID: ${{ secrets.TEKD_TEST_SPACE_ID }}
-  TEKD_TEST_ACCESS_TOKEN: ${{ secrets.TEKD_TEST_ACCESS_TOKEN }}
 jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ruby-version: [3.1]
-        node-version: [16.x]
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Ruby 
-        uses: ruby/setup-ruby@8575951200e472d5f2d95c625da0c7bec8217c42 
-        with:
-          ruby-version: '3.1' 
-      - name: Install bundler
-        run: gem install bundler 
-      - name: Install dependencies
-        run: bundle install
-      - name: check vars
-        run: echo "Contentful Space ID is $TEKD_TEST_SPACE_ID"
-      - name: pull data
-        run: |
-          bundle exec jekyll contentful
-          bundle exec jekyll build
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
-      - name: install npm dependencies
-        run: npm install
-      - name: pre-deploy
-        run: npm run deploy
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
+  call-workflow-2-in-local-repo:
+    uses: ./.github/workflows/build.yml

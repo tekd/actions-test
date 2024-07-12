@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: Jekyll Contentful Build and Deploy
 run-name: Jekyll Contentful Build and Deploy 🚀
 on:
   push:
